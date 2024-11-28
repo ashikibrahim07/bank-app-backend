@@ -19,6 +19,13 @@ app.use(
   })
 );
 
+// Logging Middleware for Debugging
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  console.log("Request Headers:", req.headers);
+  next();
+});
+
 // Routes
 const bookRoutes = require("./src/books/book.route");
 const orderRoutes = require("./src/orders/order.route");
